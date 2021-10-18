@@ -1,1 +1,142 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(//fonts.googleapis.com/css?family=Work+Sans:400,200,300,500,600,700,800);
+@import url(//fonts.googleapis.com/css?family=Roboto:400,200,300,500,600,700,800);
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+//color palette: https://coolors.co/ed254e-f9dc5c-f4fffd-011936-465362
+body {
+    font-family: 'Roboto', sans-serif;
+    padding-top: 55px;
+    background-color: #d1d3d4;
+}
+
+.header-top {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 1;
+}
+
+.sticky-top {
+    padding-top: 80px;
+    padding-bottom: 30px;
+}
+
+.header-top img {
+    width: 100%;
+}
+
+.header-info {
+    width: 50%;
+}
+
+.details-overview {
+    background-color: #FFFFFF;
+}
+
+h1 {
+    color: #2B2F3C;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 25px;
+}
+
+h2 {
+    color: #2B2F3C;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
+}
+
+.start {
+    position: relative;
+    margin-top: 10%;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 25px;
+    z-index: 2;
+}
+
+.overview {
+    min-width: 250px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    min-height: 150px;
+    margin-bottom: 20px;
+    border: 1px solid #FFFFFF;
+    word-wrap: break-word;
+}
+
+.spinner-border {
+    color: #F4FFFD;
+    width: 5rem; 
+    height: 5rem;
+}
+
+.spinner-alignment {
+    margin-top: 150px
+}
+
+.lala {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.align-content-center {
+    display: flex;
+    align-items: center
+}
+
+.settings-bar {
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+}
+
+label {
+    font-size: 15px;
+}
+
+.form-check {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.loading {
+    margin: auto;
+    width: 80%;
+    min-width: 250px;
+    padding: 20px;
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.see-explanation-link {
+    cursor: pointer;
+}
+
+.bordertest {
+    border: 1px solid black;
+}
+
+.btn, .btn-primary:disabled {
+    background-color: #011936;
+    border-color: #011936;
+}
+
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active  {
+    background-color: #FFFFFF !important;
+    border-color: #011936 !important;
+    color: #011936 !important;
+}
+
+.space {
+    margin-top: 80px;
+}

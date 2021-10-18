@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="header-top">
+        <img src="assets/background.jpg" alt="">
+    </div>
+
+    <div class="container start shadow-lg">
+        <h5>Calculez la meilleure prime 2022 selon vos besoin</h5>
+        <p>
+            Cette plateforme permet de calculer la meilleure prime d'assurance maladie en fonction des frais médicaux annuels (hors prime mensuelle) 
+            et propose la meilleure offre et la meilleure franchise en fonction de vos besoins. <br>
+            <a routerLink="/about">Plus d'informations</a>
+        </p>
+    </div>
+
+    <div class="container start shadow-lg">
+            <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-12 col-lg-4">
+                        <label for="yob">Année de naissance</label>
+                        <input type="number" id="yob" class="form-control" placeholder="1980" formControlName="yob">
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <label for="canton" id="canton">Canton de résidence</label>
+                        <select class="form-control" name="canton" formControlName="canton">
+                            <option value="AG">Argovie</option>
+                            <option value="AI">Appenzell Rhodes Intérieures</option>
+                            <option value="AR">Appenzell Rhodes Extérieures</option>
+                            <option value="BE">Berne</option>
+                            <option value="BL">Bâle-Campagne</option>
+                            <option value="BS">Bâle-Ville</option>
+                            <option value="FR">Fribourg</option>
+                            <option value="GE">Genève</option>
+                            <option value="GL">Glaris</option>
+                            <option value="GR">Grisons</option>
+                            <option value="JU">Jura</option>
+                            <option value="LU">Lucerne</option>
+                            <option value="NE">Neuchâtel</option>
+                            <option value="NW">Nidwald</option>
+                            <option value="OW">Obwald</option>
+                            <option value="SG">Saint-Gall</option>
+                            <option value="SH">Schaffhouse</option>
+                            <option value="SO">Soleure</option>
+                            <option value="SZ">Schwyz</option>
+                            <option value="TG">Thurgovie</option>
+                            <option value="TI">Tessin</option>
+                            <option value="UR">Uri</option>
+                            <option value="VD">Vaud</option>
+                            <option value="VS">Valais</option>
+                            <option value="ZG">Zoug</option>
+                            <option value="ZH">Zurich</option>
+                        </select>
+                    </div>
+
+                <div class="col-12 col-lg-4">
+                    <label for="medicalFees">Factures médicales (hors primes mensuelles)</label>
+                    <input type="number" id="medicalFees" class="form-control" placeholder="500" formControlName="medicalFees">                    
+                </div>
+                <div class="col col-12 form-check">
+                    <input class="form-check-input" type="checkbox" id="accident" formControlName="accident">
+                    <label class="form-check-label" for="accident"> Avec assurance accidents ?</label>
+                </div>
+                <div class="col col-12 form-check">
+                    <input class="form-check-input" type="checkbox" id="freeDocElection" formControlName="freeDocElection">
+                    <label class="form-check-label" for="freeDocElection"> Libre choix du médecin ?</label>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="p-2"></div>
+                <div class="p-2"></div>
+                <div class="ml-auto p-2"><button class="btn btn-primary" type="submit" [disabled]="detailsForm.invalid">Calculer</button></div>
+            </div>
+                
+                
+            </form>
+            <p class="text-danger"></p>
+    </div>
+</div>

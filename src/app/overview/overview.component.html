@@ -1,0 +1,109 @@
+<div class="container-fluid sticky-top settings-bar shadow-lg">
+    <button class="btn btn-primary" (click)="setShowSettings()">{{ settingsLabel }}</button> 
+    <div *ngIf="getShowSettingBar()">
+        <form [formGroup]="detailsForm" (ngSubmit)="onUpdate()">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-lg-2">
+                        <label for="yob">Année de naissance</label>
+                        <input type="number" id="yob" class="form-control" placeholder="1980" formControlName="yob" >
+                    </div>
+                    <div class="col col-lg-2">
+                        <label for="canton" id="canton">Canton de résidence</label>
+                        <select class="form-control" name="canton" formControlName="canton">
+                            <option value="AG">Argovie</option>
+                            <option value="AI">Appenzell Rhodes Intérieures</option>
+                            <option value="AR">Appenzell Rhodes Extérieures</option>
+                            <option value="BE">Berne</option>
+                            <option value="BL">Bâle-Campagne</option>
+                            <option value="BS">Bâle-Ville</option>
+                            <option value="FR">Fribourg</option>
+                            <option value="GE">Genève</option>
+                            <option value="GL">Glaris</option>
+                            <option value="GR">Grisons</option>
+                            <option value="JU">Jura</option>
+                            <option value="LU">Lucerne</option>
+                            <option value="NE">Neuchâtel</option>
+                            <option value="NW">Nidwald</option>
+                            <option value="OW">Obwald</option>
+                            <option value="SG">Saint-Gall</option>
+                            <option value="SH">Schaffhouse</option>
+                            <option value="SO">Soleure</option>
+                            <option value="SZ">Schwyz</option>
+                            <option value="TG">Thurgovie</option>
+                            <option value="TI">Tessin</option>
+                            <option value="UR">Uri</option>
+                            <option value="VD">Vaud</option>
+                            <option value="VS">Valais</option>
+                            <option value="ZG">Zoug</option>
+                            <option value="ZH">Zurich</option>
+                        </select>
+                    </div>
+                    <div class="col col-lg-2">
+                        <label for="medicalFees">Frais médicaux</label>
+                        <input type="number" id="medicalFees" class="form-control" placeholder="500" formControlName="medicalFees" value="{{ details.medicalFees }}">                    
+                    </div>
+                    <div class="col col-lg-3">
+                        <div class="col col-12 form-check">
+                            <input class="form-check-input" type="checkbox" id="accident" formControlName="accident">
+                            <label class="form-check-label" for="accident"> Avec assurance accidents ?</label>
+                        </div>
+                        <div class="col col-12 form-check">
+                            <input class="form-check-input" type="checkbox" id="freeDocElection" formControlName="freeDocElection">
+                            <label class="form-check-label" for="freeDocElection"> Libre choix du médecin ?</label>
+                        </div>
+                    </div>
+
+                    <div class="ml-auto p-2 align-content-center"><button class="btn btn-primary" type="submit" [disabled]="detailsForm.invalid">Actualiser</button></div>
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="isReady == true; else elseBlock">
+    <div *ngFor="let insurance of insuranceList; let i = index" class="container overview shadow-lg">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>{{ i+1 }}. {{ insurance.insuranceName }}</h1>
+            </div>
+            <div class="col-sm-12">
+                <h2>Franchise {{ insurance.insuranceFranchise }}</h2>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <p>CHF {{ insurance.insurancePriceMonth | number : '1.2-2' }} / mois 
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <p>Modèle d'assurance: {{ insurance.insuranceModelDescription }} <br>
+                Description: {{ insurance.insuranceDescription}}
+                </p>
+            </div>
+            <div class="col-sm-12">
+                <button class="btn btn-primary" (click)="setShowDetails(i)">Détails</button>
+            </div>
+        </div>
+        <div class="col-12">
+            <span *ngIf="getShowDetails(i) == 1"> 
+                <hr>
+                Vos frais médicaux annuels comprenant la prime annuelle, les frais médicaux, la franchise et la cote part seront de: <br> 
+                <span class="font-weight-bold">CHF {{ insurance.totalFees | number : '1.2-2' }}</span> en ayant <span class="font-weight-bold">CHF {{ getMedicalFees() | number : '1.2-2' }}</span> de factures de frais médicaux. <br>
+                <span *ngIf="i==0">
+                    En optant pour ce modèle, vous choisissez l'assurance la moins chère selon vos frais estimés.
+                </span>
+                <span *ngIf="i>0"> 
+                    En optant pour ce modèle, vous payeriez <span class="font-weight-bold">CHF {{ getDifference(insurance.totalFees) | number : '1.2-2' }}</span>/an de plus comparé à l'assurance la moins chère.
+                </span>
+            </span>
+        </div>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <div class="d-flex justify-content-center spinner-alignment">
+        <div class="row">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</ng-template>

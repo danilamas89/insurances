@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="header-top">
+        <img src="assets/background.jpg" alt="">
+    </div>
+
+    <div class="container start shadow-lg">
+        <h1>A propos</h1><br>
+        <h2>Source de données et avertissement</h2>
+        <p>
+            Les données sont fournies gratuitement par l'OFSP via 
+            la plateforme <a href="https://opendata.swiss/fr/dataset/health-insurance-premiums" target="_blank">Open.swiss</a>. <br> 
+            Ces données étant brutes, elles ont été traitées au préalable avant d'être insérées dans une base de données pour être exploitables.
+            J'ai réalisé ce projet par curiosité et par nécessité de comprendre comment fonctionnent les primes d'assurance maladie.
+            Toutefois, n'étant pas le propriétaire ni l'auteur de ces données, je ne peux pas garantir leur exactitude.
+            De plus, les prix finaux peuvent être sensiblement différents de ceux affichés sur ce site 
+            à cause de certains rabais appliqués sur la prime mensuelle tels que la "Redistribution du produit de la taxe environnementale".
+        </p>
+        <h2>Quelques explications</h2>
+        <p>    
+            Chaque fin d'année, tous les résidents suisses sont amenés à se demander s'ils doivent changer 
+            d'assurance maladie.
+            Il y a deux principaux paramètres à prendre en compte :
+        </p>
+        <ul>
+            <li>Le canton de résidence</li>
+            <li>La catégorie d'âge</li>
+        </ul>    
+        <p>    
+            En effet, les primes d'assurance maladie varient d'un canton à l'autre et en fonction de la catégorie d'âge (enfant de 0-18 ans, jeune adulte de 19-25 ans, adulte de plus de 26 ans) <br>
+            Il existe ensuite trois autres paramètres qui permettent de choisir la meilleure prime:
+        </p>
+        <ul>
+            <li>Le libre choix du médecin
+                <ul>
+                    <li>Le libre choix du médecin permet de consulter n'importe quel médecin sans devoir passer par le médecin généraliste. 
+                        Cela permet plus de flexibilité mais la prime coûte plus cher.</li>
+                </ul>
+            </li>
+            <li>Le besoin d'une assurance accident.
+                <ul>
+                    <li>Si vous travaillez, vous êtes en principe assurés pour les accident.</li>
+                </ul>  
+            </li>
+            <li>La franchise
+                <ul>
+                    <li>Il existe plusieurs franchises. Chez les adultes, elle va de 300 à 2500CHF. Cela signifie que lorsque vous irez chez le médecin, 
+                        vous devrez payer les factures de frais médicaux à hauteur de la franchise. 
+                        Une fois la franchise atteinte, un 10% des factures de frais médicaux sera à payer jusqu'à hauteur de 700CHF maximum.</li>
+                </ul>
+            </li>
+        </ul>
+        <p>
+            Voici donc un résumé des informations à prendre en compte. Attention, bien qu'il existe un mythe selon lequel "les femmes en âge de procréer" payent plus, 
+            le sexe n'est pas un critère pour calculer la prime maladie ! <br>
+        </p>
+
+        <h2>Méthode</h2>
+        <p>
+            Il existe différents comparateurs en ligne mais aucun ne guide l'utilisateur sur la franchise à choisir. <br>
+            C'est en partant de ce constat que j'ai décidé de réaliser ce comparateur, un peu différent.
+            Au lieu de demander la franchise souhaitée, nous vous demandons le total de frais médicaux estimés. 
+            En d'autres termes, le total des factures que les médecins vont émettre.
+            <br> 
+            <br> 
+            Par exemple:
+        </p>
+            <ul>
+                <li>Check up annuel : 150.00 CHF</li>
+                <li>Analyses de sang : 95.00 CHF</li>
+                <li>Contrôle des yeux : 250.00 CHF</li>
+                <li>Total : 495.00 CHF</li>
+            </ul>
+        <p>
+            Dans ce cas là, le total des factures émises serait de 495.00 CHF. <br>
+            Grâce à ce montant, nous pouvons calculer quelle est la meilleure franchise selon le calcul suivant :<br>
+            Prime annuelle + frais médicaux estimés + franchise + cote part. <br> 
+            Une fois que ce calcul est réalisé sur toutes les primes disponibles, les primes sont triées par ordre de prix croissant.
+        </p>
+    </div>
+</div>
